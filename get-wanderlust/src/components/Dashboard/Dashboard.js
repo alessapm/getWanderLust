@@ -6,8 +6,11 @@ import { browserHistory } from 'react-router';
 export default class Dashboard extends Component {
   constructor(props){
     super(props);
+    console.log('props: ',props)
 
-    // this.state = {}
+    this.state = {
+      explore_list: []
+    }
   }
 
   // check for presence of JWT token
@@ -39,10 +42,14 @@ export default class Dashboard extends Component {
           list.json().then((explore_list) => {
             console.log('**explore list: ', explore_list);
 
-            if(explore_list) {
+            if(explore_list.length > 0) {
               this.setState({
-                explore_list: explore_list,
+                explore_list: explore_list
                 // maybe other stuff here
+              })
+            } else {
+              this.setState({
+                explore_list: [{id:1, city_name: 'You don\'t have anything in your explore list yet!'}]
               })
             }
           })
@@ -59,6 +66,18 @@ export default class Dashboard extends Component {
     return (
       <div className='wrapper'>
         <h1>THIS IS THE DASHBOARD</h1>
+        <h2>Hello, {window.localStorage.firstname}</h2>
+
+        <div className='forIteration'>
+          {this.state.explore_list.map((city) => {
+            return(
+              <div key={city.id}>
+                <h3> {city.city_name} </h3>
+                <p> {city.priority} </p>
+              </div>
+            )
+          })}
+        </div>
       </div>
     )
   }

@@ -7,6 +7,7 @@ import { Route, Router, browserHistory } from 'react-router';
 import Main from './components/Main/Main';
 import Login from './components/Login/Login';
 import NewUser from './components/NewUser/NewUser';
+import Dashboard from './components/Dashboard/Dashboard';
 
 
 
@@ -17,6 +18,7 @@ ReactDom.render(
     <Route path='/' component={Main} />
     <Route path='/login' component={Login} />
     <Route path='/signup' component={NewUser} />
+    <Route path='/dashboard' component={Dashboard} />
 
   </Router>,
   document.getElementById('app'));
