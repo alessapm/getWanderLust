@@ -5,7 +5,8 @@ import { Route, Router, browserHistory } from 'react-router';
 // import "./styles/style.css"
 
 import Main from './components/Main/Main';
-// import Login from './components/Login/Login';
+import Login from './components/Login/Login';
+import NewUser from './components/NewUser/NewUser';
 
 
 
@@ -13,7 +14,9 @@ import Main from './components/Main/Main';
 
 ReactDom.render(
   <Router history={browserHistory}>
-    <Route path="/" component={Main} />
+    <Route path='/' component={Main} />
+    <Route path='/login' component={Login} />
+    <Route path='/signup' component={NewUser} />
 
   </Router>,
   document.getElementById('app'));
