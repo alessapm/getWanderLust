@@ -10,14 +10,14 @@ export default class Nav extends Component {
     super()
   }
 
-render(){
-  return(
-    <div className='wrapper'>
-      <h1>getWANDERLUST</h1>
-      <NavLinks />
-    </div>
-  )
-}
+  render(){
+    return(
+      <div className='nav-wrapper'>
+        <Link to='/'>getWANDERLUST</Link>
+        <NavLinks />
+      </div>
+    )
+  }
 
 
 }

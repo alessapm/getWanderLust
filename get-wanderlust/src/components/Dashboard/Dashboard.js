@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import update from 'react-addons-update';
-// import Nav from '../Nav/Nav';
+import Nav from '../Nav/Nav';
 import { browserHistory } from 'react-router';
 
 export default class Dashboard extends Component {
@@ -62,19 +62,11 @@ export default class Dashboard extends Component {
     })
   }; //closes getExploreList
 
-  logout() {
-    localStorage.removeItem('firstname');
-    localStorage.removeItem('lastname');
-    localStorage.removeItem('token');
-    localStorage.removeItem('user_id');
-    browserHistory.push('/');
-  }
 
   render() {
     return (
       <div className='wrapper'>
-        <h1>THIS IS THE DASHBOARD</h1>
-        <button onClick={this.logout.bind(this)}>Logout</button>
+        <Nav /><br />
 
         <h2>Hello, {window.localStorage.firstname}</h2>
         <p>I'd love to explore...</p>

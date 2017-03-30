@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import update from 'react-addons-update';
 import { browserHistory } from 'react-router';
 
-//import Nav
+import Nav from '../Nav/Nav';
 
 export default class NewUser extends Component {
   constructor(props){
@@ -48,6 +48,7 @@ export default class NewUser extends Component {
   render() {
     return(
       <div className='container'>
+        <Nav /><br />
         <form onSubmit={this.handleSubmit.bind(this)}>
           <input name="first_name"
             onChange={this.handleChange.bind(this)}

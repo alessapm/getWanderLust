@@ -1,0 +1,10 @@
+body {
+  background-color: lightblue;
+
+}
+
+.cityphotos-container {
+  display: flex;
+  width: 800px;
+  flex-wrap: wrap;
+}

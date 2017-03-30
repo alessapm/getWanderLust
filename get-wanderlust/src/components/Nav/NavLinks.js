@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { browserHistory } from 'react-router';
 
-class NavLinks extends Component {
+export default class NavLinks extends Component {
   constructor(){
     super();
 
@@ -33,8 +33,15 @@ class NavLinks extends Component {
         </div>
       )
     } else {
-
+      return (
+        <div>
+          <Link to="/login">Login</Link>
+          <Link to="/signup">Signup</Link>
+        </div>
+      )
     }
   } //closes render
 
 } //closes NavLinks
+
+

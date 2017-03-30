@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import update from 'react-addons-update';
 import { browserHistory } from 'react-router';
 
-// imprt Nav
+import Nav from '../Nav/Nav';
 
 export default class Login extends Component {
   constructor(props){
@@ -45,6 +45,8 @@ export default class Login extends Component {
         window.localStorage.setItem('lastname', object.lastname);
         window.localStorage.setItem('user_id', object.user_id);
 
+
+
         browserHistory.push('/dashboard') //need id with this?
 
       })
@@ -59,6 +61,7 @@ export default class Login extends Component {
   render() {
     return(
       <div className='container'>
+        <Nav /><br />
         <form onSubmit={this.handleSubmit.bind(this)}>
 
           <input name="email"
@@ -76,6 +79,7 @@ export default class Login extends Component {
           <button type="submit">Submit</button>
 
         </form>
+        <p>{this.state.error}</p>
       </div>
     )
   }
