@@ -1,15 +1,23 @@
 import React, { Component } from 'react';
-// import update from 'react-addons-update';
+import Axios from 'axios';
+import update from 'react-addons-update';
+import CityPhotos from '../CityPhotos/CityPhotos';
+import CityAttractions from '../CityAttractions/CityAttractions';
 
 export default class Main extends Component {
   constructor(props) {
     super(props);
 
-    //this is where state will go
+    this.state = {
+      images: [],
+      attractions: []
+    }
   }
 
 
   findImages() {
+    // change to Axios()
+
     fetch(`http://localhost:8000/explore/paris`, {
       method: 'GET',
       headers: {
@@ -18,7 +26,8 @@ export default class Main extends Component {
     })
     .then(r => r.json()
       .then((data) => {
-        console.log('data: ', data)
+        console.log('data: ', data);
+        this.setState({ images: data })
       })
     )
     .catch((err) => console.log('findImages err: ', err));
@@ -33,7 +42,8 @@ export default class Main extends Component {
     })
     .then(r => r.json()
       .then((data) => {
-        console.log('data: ', data)
+        console.log('data: ', data);
+        this.setState({ attractions: data })
       })
     )
     .catch((err) => console.log('findImages err: ', err));
@@ -50,6 +60,20 @@ export default class Main extends Component {
       <h1>Hello World</h1>
       <button type="submit" onClick={this.findImages.bind(this)} >Click Me</button>
       <button type="submit" onClick={this.findAttractions.bind(this)} >Fuck Yeah!</button>
+      <div className="wrapper">
+        <div className="getImages">
+
+          <CityPhotos
+            images={this.state.images}
+          />
+
+          <CityAttractions
+            attractions={this.state.attractions}
+           />
+
+        </div>
+        <div className="getAttractions"></div>
+      </div>
     </div>
 
     )

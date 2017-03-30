@@ -62,22 +62,33 @@ export default class Dashboard extends Component {
     })
   }; //closes getExploreList
 
+  logout() {
+    localStorage.removeItem('firstname');
+    localStorage.removeItem('lastname');
+    localStorage.removeItem('token');
+    localStorage.removeItem('user_id');
+    browserHistory.push('/');
+  }
+
   render() {
     return (
       <div className='wrapper'>
         <h1>THIS IS THE DASHBOARD</h1>
-        <h2>Hello, {window.localStorage.firstname}</h2>
+        <button onClick={this.logout.bind(this)}>Logout</button>
 
-        <div className='forIteration'>
-          {this.state.explore_list.map((city) => {
-            return(
-              <div key={city.id}>
-                <h3> {city.city_name} </h3>
-                <p> {city.priority} </p>
-              </div>
-            )
-          })}
-        </div>
+        <h2>Hello, {window.localStorage.firstname}</h2>
+        <p>I'd love to explore...</p>
+          <div className='forIteration'>
+            {this.state.explore_list.map((city) => {
+              return(
+                <div key={city.id}>
+                  <h3> {city.city_name} </h3>
+                  <p> {city.priority} </p>
+                </div>
+              )
+            })}
+          </div>
+
       </div>
     )
   }
