@@ -19,15 +19,37 @@ export default class Main extends Component {
     }
   }
 
+  //add something to the user's explore list
+  addToExplore(){
+    //do request to express to add a explore item, get user_id from localStorage
+    fetch(`http://localhost:8000/explore/list/${window.localStorage.user_id}`, {
+      method: 'POST',
+      body: JSON.stringify({
+        city: {
+          name: this.state.city,
+          priority: 3
+        }
+      }),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+  }
+
+  //display "Showing images for..."
   showing(){
-    console.log('showing is firing', this.state.city)
+
     if (this.state.reveal && this.state.city !== ''){
       return(
+        <div>
         <p>Showing images for: "{this.state.city}"</p>
+        <button onClick={this.addToExplore.bind(this)}>Add to Explore List</button>
+        </div>
       )
     }
   }
 
+  //request to GettyImages API route
   findImages() {
     // change to Axios()
 
@@ -46,6 +68,7 @@ export default class Main extends Component {
     .catch((err) => console.log('findImages err: ', err));
   } //closes findImages
 
+  //request to Yelp API route
   findAttractions() {
     fetch(`http://localhost:8000/explore/attractions/${this.state.city}`, {
       method: 'GET',
@@ -55,7 +78,7 @@ export default class Main extends Component {
     })
     .then(r => r.json()
       .then((data) => {
-        console.log('data: ', data);
+        console.log('*******data: ', data);
         this.setState({ attractions: data })
       })
     )

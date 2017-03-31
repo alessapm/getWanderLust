@@ -8,3 +8,12 @@ body {
   width: 800px;
   flex-wrap: wrap;
 }
+
+.caro-modal {
+  text-align: center;
+}
+
+.attraction img{
+  height: 200px;
+  width: 250px;
+}
