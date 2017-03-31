@@ -1,19 +1,94 @@
 body {
-  background-color: lightblue;
+  background-color: rgba(1,1,1,.9);
+  margin: 0;
+  color: white;
 
+}
+
+nav {
+  display: flex;
+  justify-content: flex-end;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: black;
+}
+
+nav a{
+  text-decoration: none;
+  color: #FF8686;
+
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-between;
+  width: 10%;
+}
+
+.wrapper {
+  height: 2000px;
+}
+
+.imagesAndAttractions {
+  display: flex;
+  justify-content: space-around;
+}
+
+.getImages {
+  width: 700px;
+  /*flex: 2;*/
 }
 
 .cityphotos-container {
   display: flex;
-  width: 800px;
   flex-wrap: wrap;
+}
+
+.carousel-wrapper {
+  display: flex;
 }
 
 .caro-modal {
   text-align: center;
+  background-color: black;
+}
+
+.caro-modal img {
+  height: 600px;
+  width: 976;
+}
+
+.attraction {
+  max-width: 260px;
+  display: flex;
+  margin: 10px;
+}
+
+.att-details {
+  width: 120px;
 }
 
 .attraction img{
   height: 200px;
   width: 250px;
+}
+
+.welcome {
+  height: 800px;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.welcome img {
+  width: 75%;
+}
+
+.photo {
+  margin: 10px;
+}
+
+.logo {
+  width: 100px;
 }

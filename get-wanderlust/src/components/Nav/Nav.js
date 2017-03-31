@@ -12,10 +12,10 @@ export default class Nav extends Component {
 
   render(){
     return(
-      <div className='nav-wrapper'>
-        <Link to='/'>getWANDERLUST</Link>
+      <nav>
+
         <NavLinks />
-      </div>
+      </nav>
     )
   }
 

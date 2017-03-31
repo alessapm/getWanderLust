@@ -97,35 +97,40 @@ export default class Main extends Component {
 
    return(
      <div>
-      <Nav /><br />
-      <label>It's a big world. Where do you want to go?</label><br />
-      <input name="city"
-        type="text"
-        onChange={this.handleChange.bind(this)}
-        placeholder="enter a city to explore"
-      />
-      <button type="submit" onClick={this.findImages.bind(this)} >Inspire Me</button>
-      <button type="submit" onClick={this.findAttractions.bind(this)} >Tell Me More</button>
+      <Nav />
+      <div className="welcome">
+        <img src="../../styles/get-wanderflust-white-01.svg" />
+      </div>
+      <div className="search-area">
+        <label>It's a big world, where do you want to go?</label><br />
+        <input name="city"
+          type="text"
+          onChange={this.handleChange.bind(this)}
+          placeholder="enter a city to explore"
+        />
+        <button type="submit" onClick={this.findImages.bind(this)} >Inspire Me</button>
+        <button type="submit" onClick={this.findAttractions.bind(this)} >Tell Me More</button>
+      </div>
       <div className="wrapper">
+        <div className="imagesAndAttractions">
+          <div className="getImages">
+            {this.showing()}
+            <CityPhotos
+              images={this.state.images}
+            />
+          </div>
+          <div className="getAttractions">
+            <CityAttractions
+              attractions={this.state.attractions}
+             />
+          </div>
 
-        <div className="getImages">
-          {this.showing()}
-          <CityPhotos
-            images={this.state.images}
-          />
         </div>
-        <div className="getAttractions">
-          <CityAttractions
-            attractions={this.state.attractions}
-           />
-        </div>
-
         <div className="getCarousel">
-          <Carousel
-            images={this.state.images}
-          />
+            <Carousel
+              images={this.state.images}
+            />
         </div>
-
       </div>
     </div>
 

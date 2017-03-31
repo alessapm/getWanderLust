@@ -28,13 +28,15 @@ export default class NavLinks extends Component {
     if (this.state.isloggedin){
       return (
         <div>
-          <Link to="/dashboard">My Explore List</Link>
+          <Link to="/"><img className="logo" src="../../styles/get-wanderflust-white-01.svg" /></Link>
+          <Link to="/dashboard">Explore List</Link>
           <p onClick={this.logout.bind(this)}>Logout</p>
         </div>
       )
     } else {
       return (
-        <div>
+        <div className="nav-links">
+
           <Link to="/login">Login</Link>
           <Link to="/signup">Signup</Link>
         </div>
