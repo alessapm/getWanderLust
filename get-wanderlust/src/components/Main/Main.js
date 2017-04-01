@@ -15,7 +15,9 @@ export default class Main extends Component {
       city: '',
       images: [],
       attractions: [],
-      reveal: false
+      reveal: false,
+      modal: false,
+      revealScroll: false
     }
   }
 
@@ -49,6 +51,18 @@ export default class Main extends Component {
     }
   }
 
+
+
+  revealModal(){
+    if (this.state.modal){
+      return (
+        <Carousel
+          images={this.state.images}
+        />
+      )
+    }
+  }
+
   //request to GettyImages API route
   findImages() {
     // change to Axios()
@@ -62,7 +76,7 @@ export default class Main extends Component {
     .then(r => r.json()
       .then((data) => {
         console.log('data: ', data);
-        this.setState({ images: data, reveal: true})
+        this.setState({ images: data, reveal: true, revealScroll: true})
       })
     )
     .catch((err) => console.log('findImages err: ', err));
@@ -90,6 +104,28 @@ export default class Main extends Component {
     this.setState({
       city: event.target.value
     })
+
+  }
+
+
+
+
+  randomize(){
+    console.log('randomize!');
+
+    const defaultCities = ["New York", "Paris", "Prague", "Vienna", "Kyoto", "Miami", "Barcelona", "Copenhagen", "Dublin", "San Francisco", "Havana", "Petra", "Munich", "Madrid", "Denver", "Johannesburg", "Melbourne", "Sydney", "Hong Kong"]
+
+    let value = Math.floor(Math.random() * (defaultCities.length-1))
+
+    someFunction = () => {
+      this.setState({city: defaultCities[value]})
+    }
+    .then(()=>{
+      this.findImages()
+    })
+    .catch(err => console.log(err))
+
+
   }
 
 
@@ -102,22 +138,29 @@ export default class Main extends Component {
           <img src="../../styles/get-wanderflust-white-01.svg" />
       </div>
       <div className="search-area">
+
         <label>It's a big world, where do you want to go?</label><br />
+        <div className="flex">
+          <p> Enter a city name like 'Paris' or 'Tokyo', or press this button &#8594;</p>
+          <p id='randomize' onClick={this.randomize.bind(this)}>R</p>
+        </div>
         <input name="city"
           type="text"
           onChange={this.handleChange.bind(this)}
           placeholder="enter a city to explore"
         /><br />
-        <button type="submit" onClick={this.findImages.bind(this)} >Images</button>
-        <button type="submit" onClick={this.findAttractions.bind(this)} >Things to do</button>
+        <button type="submit" id="find-images" onClick={this.findImages.bind(this)} >Find images</button>
+        <button type="submit" id="find-attractions" onClick={this.findAttractions.bind(this)} >Find things to do</button>
       </div>
       <div className="wrapper">
         <div className="imagesAndAttractions">
-          <div className="getImages">
+          <div className="getImages" >
             {this.showing()}
             <CityPhotos
               images={this.state.images}
+              // onClick={this.setState({modal: true})}
             />
+
           </div>
           <div className="getAttractions">
             <CityAttractions
@@ -127,9 +170,7 @@ export default class Main extends Component {
 
         </div>
         <div className="getCarousel">
-            <Carousel
-              images={this.state.images}
-            />
+          {this.revealModal()}
         </div>
       </div>
     </div>
