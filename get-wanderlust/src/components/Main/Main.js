@@ -99,7 +99,7 @@ export default class Main extends Component {
      <div>
       <Nav />
       <div className="welcome">
-        <img src="../../styles/get-wanderflust-white-01.svg" />
+          <img src="../../styles/get-wanderflust-white-01.svg" />
       </div>
       <div className="search-area">
         <label>It's a big world, where do you want to go?</label><br />
@@ -107,9 +107,9 @@ export default class Main extends Component {
           type="text"
           onChange={this.handleChange.bind(this)}
           placeholder="enter a city to explore"
-        />
-        <button type="submit" onClick={this.findImages.bind(this)} >Inspire Me</button>
-        <button type="submit" onClick={this.findAttractions.bind(this)} >Tell Me More</button>
+        /><br />
+        <button type="submit" onClick={this.findImages.bind(this)} >Images</button>
+        <button type="submit" onClick={this.findAttractions.bind(this)} >Things to do</button>
       </div>
       <div className="wrapper">
         <div className="imagesAndAttractions">

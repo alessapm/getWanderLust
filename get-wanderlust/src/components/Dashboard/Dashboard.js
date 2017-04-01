@@ -49,7 +49,7 @@ export default class Dashboard extends Component {
               })
             } else {
               this.setState({
-                explore_list: [{id:1, city_name: 'You don\'t have anything in your explore list yet!'}]
+                explore_list: [{ city_name: 'You don\'t have anything in your explore list yet!'}]
               })
             }
           })
@@ -73,9 +73,10 @@ export default class Dashboard extends Component {
           <div className='forIteration'>
             {this.state.explore_list.map((city) => {
               return(
-                <div key={city.id}>
+                <div key={city.city_name}>
                   <h3> {city.city_name} </h3>
-                  <p> {city.priority} </p>
+                  <p> {city.country}, {city.continent} </p>
+
                 </div>
               )
             })}

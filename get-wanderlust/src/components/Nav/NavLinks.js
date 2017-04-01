@@ -27,7 +27,7 @@ export default class NavLinks extends Component {
   render(){
     if (this.state.isloggedin){
       return (
-        <div>
+        <div className="nav-links">
           <Link to="/"><img className="logo" src="../../styles/get-wanderflust-white-01.svg" /></Link>
           <Link to="/dashboard">Explore List</Link>
           <p onClick={this.logout.bind(this)}>Logout</p>
