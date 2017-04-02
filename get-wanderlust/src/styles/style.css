@@ -36,11 +36,12 @@ nav a{
 }
 
 .nav-links a:hover {
-  transform: scale(1.2,1.2);
+  transform: scale(1.1,1.1);
 }
 
 .nav-links p:hover{
-  transform: scale(1.2,1.2);
+  transform: scale(1.1,1.1);
+  cursor: pointer;
 }
 
 .wrapper {
@@ -79,9 +80,11 @@ nav a{
   border-radius: 50%;
   padding: 10px;
   margin-right: 10px;
-  width: 108px;
+  width: 128px;
+  height: 40px;
   font-family: 'Roboto Condensed', sans-serif;
   cursor: pointer;
+  letter-spacing: 1.2px;
 }
 
 #find-attractions {
@@ -89,10 +92,12 @@ nav a{
   border: none;
   border-radius: 50%;
   padding: 10px;
-  width: 108px;
+  width: 128px;
+  height: 40px;
   font-family: 'Roboto Condensed', sans-serif;
   font-weight: bold;
   cursor: pointer;
+  letter-spacing: 1.2px;
 }
 
 .imagesAndAttractions {
@@ -102,9 +107,23 @@ nav a{
 }
 
 .getImages {
-  width: 60%;
+  width: 55%;
   height: 900px;
 
+}
+
+.getImages button {
+  background-color: #FF8686;
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  margin-right: 10px;
+  width: 128px;
+  height: 40px;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: .7rem;
+  cursor: pointer;
+  letter-spacing: 1.2px;
 }
 
 .cityphotos-container {
@@ -148,6 +167,11 @@ nav a{
   width: 120px;
 }
 
+.att-details a {
+  text-decoration: none;
+  color: #61DBED;
+}
+
 .attraction img{
   height: 100px;
   width: 150px;
@@ -188,4 +212,8 @@ nav a{
   margin-left: 20px;
   background-color: #FF8686;
   cursor: pointer;
+}
+
+.showing {
+  padding-left: 10px;
 }

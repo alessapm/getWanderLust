@@ -43,7 +43,7 @@ export default class Main extends Component {
 
     if (this.state.reveal && this.state.city !== ''){
       return(
-        <div>
+        <div className="showing">
         <p>Showing images for: "{this.state.city}"</p>
         <button onClick={this.addToExplore.bind(this)}>Add to Explore List</button>
         </div>
@@ -113,19 +113,20 @@ export default class Main extends Component {
   randomize(){
     console.log('randomize!');
 
-    const defaultCities = ["New York", "Paris", "Prague", "Vienna", "Kyoto", "Miami", "Barcelona", "Copenhagen", "Dublin", "San Francisco", "Havana", "Petra", "Munich", "Madrid", "Denver", "Johannesburg", "Melbourne", "Sydney", "Hong Kong"]
+    const defaultCities = ["New York", "Paris", "Prague", "Vienna", "Kyoto", "Miami", "Barcelona", "Copenhagen", "Dublin", "San Francisco", "Havana", "Petra", "Munich", "Madrid", "Denver", "Johannesburg", "Melbourne", "Sydney", "Hong Kong", "Mexico City", "Kingston", "Istanbul", "Oslo", "Warsaw", "Moscow", "Berlin", "Quebec"]
 
     let value = Math.floor(Math.random() * (defaultCities.length-1))
 
-    someFunction = () => {
+    let someFunction = () => {
       this.setState({city: defaultCities[value]})
-    }
-    .then(()=>{
+    // }
+    // .then(()=>{
       this.findImages()
-    })
-    .catch(err => console.log(err))
+    // })
+    // .catch(err => console.log(err))
+    }
 
-
+    someFunction()
   }
 
 
