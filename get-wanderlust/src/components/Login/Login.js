@@ -62,21 +62,23 @@ export default class Login extends Component {
     return(
       <div className='container'>
         <Nav /><br />
-        <form onSubmit={this.handleSubmit.bind(this)}>
-
-          <input name="email"
-          onChange={this.handleChange.bind(this)}
-          type='text'
-          placeholder="Enter Email" />
-          <br /><br />
-
-          <input name="password"
-          onChange={this.handleChange.bind(this)}
-          type='password'
-          placeholder="Enter Password" />
-          <br /><br />
-
-          <button type="submit">Submit</button>
+        <form className="user-form" onSubmit={this.handleSubmit.bind(this)}>
+          <h1 className="user-h1 drop">Welcome Back</h1>
+          <div className="form-content">
+            <label>Email Address: </label><br/>
+            <input name="email"
+            onChange={this.handleChange.bind(this)}
+            type='text'
+            placeholder="Enter Email" />
+            <br /><br />
+            <label>Password: </label><br/>
+            <input name="password"
+            onChange={this.handleChange.bind(this)}
+            type='password'
+            placeholder="Enter Password" />
+            <br /><br />
+          </div>
+          <button type="submit" className="find-images">Submit</button>
 
         </form>
         <p>{this.state.error}</p>

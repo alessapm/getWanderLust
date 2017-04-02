@@ -6,12 +6,12 @@ const Attraction = (props) => {
     <div className='attraction'>
       <div className='att-details'>
         <h3>{props.name}</h3>
-        <p>{props.rating}<br />
-        {props.category}
+        <p>rating: {props.rating} &#9733;<br />
+        category: {props.category}
         </p>
-        <Link to={props.yelp_url}>details</Link>
-
+        <a href={props.yelp_url} target="_blank">view on Yelp.com</a>
       </div>
+
       <img src={props.photo} alt={props.name} />
     </div>
   )

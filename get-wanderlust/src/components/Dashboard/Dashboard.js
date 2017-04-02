@@ -9,7 +9,8 @@ export default class Dashboard extends Component {
     console.log('props: ',props)
 
     this.state = {
-      explore_list: []
+      explore_list: [],
+      remove_id: 0
     }
   }
 
@@ -62,26 +63,38 @@ export default class Dashboard extends Component {
     })
   }; //closes getExploreList
 
+  removeCity(){
+
+    console.log('city id: ', this.state.remove_id)
+  }
 
   render() {
     return (
-      <div className='wrapper'>
+      <div className='dash-wrapper'>
+        <div className="overlay">
         <Nav /><br />
+        <div className="dashboard-wrap">
 
-        <h2>Hello, {window.localStorage.firstname}</h2>
-        <p>I'd love to explore...</p>
-          <div className='forIteration'>
-            {this.state.explore_list.map((city) => {
-              return(
-                <div key={city.city_name}>
-                  <h3> {city.city_name} </h3>
-                  <p> {city.country}, {city.continent} </p>
-
-                </div>
-              )
-            })}
+            <h2>I'd love to explore...</h2>
+            <div className='allCities'>
+              {this.state.explore_list.map((city) => {
+                return(
+                  <div key={city.city_name} className="list-city">
+                    <h3> {city.city_name} </h3>
+                    <p> country: {city.country} <br />
+                      region: {city.region}
+                    </p>
+                    <button className="remove-btn"
+                    // onClick={this.setState({remove_id: city.id}, () => {
+                    //   {this.removeCity.bind(this)}
+                    // })}
+                    >remove</button>
+                  </div>
+                )
+              })}
+            </div>
           </div>
-
+        </div>
       </div>
     )
   }

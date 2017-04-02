@@ -16,8 +16,7 @@ export default class Main extends Component {
       images: [],
       attractions: [],
       reveal: false,
-      modal: false,
-      revealScroll: false
+      modal: false
     }
   }
 
@@ -41,7 +40,7 @@ export default class Main extends Component {
   //display "Showing images for..."
   showing(){
 
-    if (this.state.reveal && this.state.city !== ''){
+    if (this.state.reveal && this.state.city !== '' && localStorage.token){
       return(
         <div className="showing">
         <p>Showing images for: "{this.state.city}"</p>
@@ -63,6 +62,11 @@ export default class Main extends Component {
     }
   }
 
+  setModalTrue(){
+     // this.setState({modal: true});
+  }
+
+
   //request to GettyImages API route
   findImages() {
     // change to Axios()
@@ -76,7 +80,7 @@ export default class Main extends Component {
     .then(r => r.json()
       .then((data) => {
         console.log('data: ', data);
-        this.setState({ images: data, reveal: true, revealScroll: true})
+        this.setState({ images: data, reveal: true})
       })
     )
     .catch((err) => console.log('findImages err: ', err));
@@ -111,19 +115,17 @@ export default class Main extends Component {
 
 
   randomize(){
-    console.log('randomize!');
 
-    const defaultCities = ["New York", "Paris", "Prague", "Vienna", "Kyoto", "Miami", "Barcelona", "Copenhagen", "Dublin", "San Francisco", "Havana", "Petra", "Munich", "Madrid", "Denver", "Johannesburg", "Melbourne", "Sydney", "Hong Kong", "Mexico City", "Kingston", "Istanbul", "Oslo", "Warsaw", "Moscow", "Berlin", "Quebec"]
+
+    const defaultCities = ["New York", "Paris", "Prague", "Vienna", "Kyoto", "Miami", "Barcelona", "Copenhagen", "Dublin", "San Francisco", "Havana", "Petra", "Munich", "Madrid", "Denver", "Johannesburg", "Melbourne", "Sydney", "Hong Kong", "Mexico City", "Kingston", "Istanbul", "Oslo", "Warsaw", "Moscow", "Berlin", "Quebec", "Phoenix"]
 
     let value = Math.floor(Math.random() * (defaultCities.length-1))
 
     let someFunction = () => {
-      this.setState({city: defaultCities[value]})
-    // }
-    // .then(()=>{
-      this.findImages()
-    // })
-    // .catch(err => console.log(err))
+      this.setState({city: defaultCities[value]}, () => {
+        this.findImages()
+      })
+
     }
 
     someFunction()
@@ -150,8 +152,8 @@ export default class Main extends Component {
           onChange={this.handleChange.bind(this)}
           placeholder="enter a city to explore"
         /><br />
-        <button type="submit" id="find-images" onClick={this.findImages.bind(this)} >Find images</button>
-        <button type="submit" id="find-attractions" onClick={this.findAttractions.bind(this)} >Find things to do</button>
+        <button type="submit" className="find-images" onClick={this.findImages.bind(this)} >Find images</button>
+        <button type="submit" className="find-attractions" onClick={this.findAttractions.bind(this)} >Find things to do</button>
       </div>
       <div className="wrapper">
         <div className="imagesAndAttractions">
@@ -159,7 +161,7 @@ export default class Main extends Component {
             {this.showing()}
             <CityPhotos
               images={this.state.images}
-              // onClick={this.setState({modal: true})}
+              onClick={this.setModalTrue()}
             />
 
           </div>

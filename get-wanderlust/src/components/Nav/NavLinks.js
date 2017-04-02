@@ -36,7 +36,7 @@ export default class NavLinks extends Component {
     } else {
       return (
         <div className="nav-links">
-
+          <Link to="/"><img className="logo" src="../../styles/get-wanderflust-white-01.svg" /></Link>
           <Link to="/login">Login</Link>
           <Link to="/signup">Signup</Link>
         </div>

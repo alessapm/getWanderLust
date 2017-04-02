@@ -49,32 +49,41 @@ export default class NewUser extends Component {
     return(
       <div className='container'>
         <Nav /><br />
-        <form onSubmit={this.handleSubmit.bind(this)}>
-          <input name="first_name"
-            onChange={this.handleChange.bind(this)}
-            type='text'
-            placeholder="Enter First Name" />
-            <br /><br />
 
-            <input name="last_name"
-            onChange={this.handleChange.bind(this)}
-            type='text'
-            placeholder="Enter Last Name" />
-            <br /><br />
+        <form className="user-form" onSubmit={this.handleSubmit.bind(this)}>
+          <h1 className="user-h1">Welcome to <br />
+          <img src="../../styles/get-wanderflust-white-01.svg" /></h1><br />
+          <div className="form-content">
+            <label>First Name: </label><br/>
+            <input name="first_name"
+              onChange={this.handleChange.bind(this)}
+              type='text'
+              placeholder="Enter First Name" />
+              <br /><br />
 
-          <input name='email'
-            onChange={this.handleChange.bind(this)}
-            type='text'
-            placeholder='Enter Email' />
-            <br /><br />
+              <label>Last Name: </label><br/>
+              <input name="last_name"
+              onChange={this.handleChange.bind(this)}
+              type='text'
+              placeholder="Enter Last Name" />
+              <br /><br />
 
-            <input name='password'
-            onChange={this.handleChange.bind(this)}
-            type='password'
-            placeholder='Enter password' />
-            <br /><br />
+              <label>Email Address: </label><br/>
+              <input name='email'
+              onChange={this.handleChange.bind(this)}
+              type='text'
+              placeholder='Enter Email' />
+              <br /><br />
 
-            <button type="submit">Submit</button>
+              <label>Password: </label><br/>
+              <input name='password'
+              onChange={this.handleChange.bind(this)}
+              type='password'
+              placeholder='Enter password' />
+              <br /><br />
+            </div>
+            <button type="submit" className="find-attractions">Submit</button>
+
           </form>
       </div>
     )
