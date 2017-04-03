@@ -21,7 +21,8 @@ export default class NavLinks extends Component {
     localStorage.removeItem('firstname');
     localStorage.removeItem('lastname');
     localStorage.removeItem('user_id');
-    browserHistory.push('/');
+     window.location.reload();
+     // browserHistory.push('/');
   }
 
   render(){

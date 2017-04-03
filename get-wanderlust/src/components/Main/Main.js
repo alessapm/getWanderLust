@@ -16,7 +16,7 @@ export default class Main extends Component {
       images: [],
       attractions: [],
       reveal: false,
-      modal: false
+      modal: true
     }
   }
 
@@ -43,27 +43,25 @@ export default class Main extends Component {
     if (this.state.reveal && this.state.city !== '' && localStorage.token){
       return(
         <div className="showing">
-        <p>Showing images for: "{this.state.city}"</p>
-        <button onClick={this.addToExplore.bind(this)}>Add to Explore List</button>
+          <p>Showing images for: "{this.state.city}"</p>
+          <button onClick={this.addToExplore.bind(this)}>Add to Explore List</button>
+        </div>
+      )
+    } else if (this.state.reveal && this.state.city !== '') {
+      return(
+        <div className="showing">
+          <p>Showing images for: "{this.state.city}"</p>
         </div>
       )
     }
-  }
+  } //closes showing
 
 
-
-  revealModal(){
-    if (this.state.modal){
-      return (
-        <Carousel
-          images={this.state.images}
-        />
-      )
-    }
-  }
-
-  setModalTrue(){
-     // this.setState({modal: true});
+  setModal(){
+    console.log('setModalTrue!')
+    //  const set = () => {
+    //   this.setState({modal: true});
+    // }
   }
 
 
@@ -112,24 +110,21 @@ export default class Main extends Component {
   }
 
 
-
-
   randomize(){
 
-
-    const defaultCities = ["New York", "Paris", "Prague", "Vienna", "Kyoto", "Miami", "Barcelona", "Copenhagen", "Dublin", "San Francisco", "Havana", "Petra", "Munich", "Madrid", "Denver", "Johannesburg", "Melbourne", "Sydney", "Hong Kong", "Mexico City", "Kingston", "Istanbul", "Oslo", "Warsaw", "Moscow", "Berlin", "Quebec", "Phoenix"]
+    const defaultCities = ["New York", "Paris", "Prague", "Vienna", "Kyoto", "Miami", "Barcelona", "Copenhagen", "Dublin", "San Francisco", "Havana", "Petra", "Munich", "Madrid", "Denver", "Johannesburg", "Melbourne", "Sydney", "Hong Kong", "Mexico City", "Kingston", "Istanbul", "Oslo", "Warsaw", "Moscow", "Berlin", "Quebec", "Phoenix", "London", "Vancouver"]
 
     let value = Math.floor(Math.random() * (defaultCities.length-1))
 
-    let someFunction = () => {
+    let pickRandom = () => {
       this.setState({city: defaultCities[value]}, () => {
         this.findImages()
       })
 
     }
 
-    someFunction()
-  }
+    pickRandom()
+  } //closes randomize
 
 
   render() {
@@ -161,7 +156,7 @@ export default class Main extends Component {
             {this.showing()}
             <CityPhotos
               images={this.state.images}
-              onClick={this.setModalTrue()}
+              setModal={this.setModal.bind(this)}
             />
 
           </div>
@@ -173,7 +168,7 @@ export default class Main extends Component {
 
         </div>
         <div className="getCarousel">
-          {this.revealModal()}
+          { this.state.modal ? <Carousel images={this.state.images} /> : null }
         </div>
       </div>
     </div>

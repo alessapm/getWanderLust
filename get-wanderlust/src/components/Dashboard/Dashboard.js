@@ -63,10 +63,23 @@ export default class Dashboard extends Component {
     })
   }; //closes getExploreList
 
-  removeCity(){
+  removeCity(id){
 
-    console.log('city id: ', this.state.remove_id)
-  }
+    this.setState({remove_id: id}, () => {
+      fetch(`http://localhost:8000/explore/list/d/${id}`, {
+        method: 'DELETE'
+      })
+      .then(() => {
+        window.location.reload()
+      })
+      .catch((err) => {
+        console.log('error in removeCity: ', err)
+      })
+    })
+
+    console.log('city id: ', id);
+
+  } //closes removeCity
 
   render() {
     return (
@@ -79,16 +92,15 @@ export default class Dashboard extends Component {
             <div className='allCities'>
               {this.state.explore_list.map((city) => {
                 return(
-                  <div key={city.city_name} className="list-city">
+                  <div key={city.city_id} className="list-city">
                     <h3> {city.city_name} </h3>
-                    <p> country: {city.country} <br />
-                      region: {city.region}
-                    </p>
+                    <p> country: {city.country}</p>
+                    <p>region: {city.region}</p>
+                    <p> official language: {city.language}</p>
+                    <p> population: {city.population}</p>
+
                     <button className="remove-btn"
-                    // onClick={this.setState({remove_id: city.id}, () => {
-                    //   {this.removeCity.bind(this)}
-                    // })}
-                    >remove</button>
+                    onClick={() => this.removeCity(city.city_id)}>remove</button>
                   </div>
                 )
               })}

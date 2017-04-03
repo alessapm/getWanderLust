@@ -2,6 +2,7 @@ import React from 'react';
 import Photo from '../Photo/Photo.js';
 
 const CityPhotos = (props) => {
+
   const images = props.images.map((image) => {
     return (
       <Photo
@@ -9,6 +10,7 @@ const CityPhotos = (props) => {
         title={image.title}
         photo={image.display_sizes[0].uri}
         caption={image.caption}
+        // onClick= {props.setModal()}
       />
     )
   });
