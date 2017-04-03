@@ -43,8 +43,8 @@ export default class Main extends Component {
     if (this.state.reveal && this.state.city !== '' && localStorage.token){
       return(
         <div className="showing">
-          <p>Showing images for: "{this.state.city}"</p>
-          <button onClick={this.addToExplore.bind(this)}>Add to Explore List</button>
+          <p>Showing results for: "{this.state.city}"</p>
+          <button onClick={this.addToExplore.bind(this)}>+Explore</button>
         </div>
       )
     } else if (this.state.reveal && this.state.city !== '') {
@@ -135,7 +135,7 @@ export default class Main extends Component {
 
   randomize(){
 
-    const defaultCities = ["New York", "Paris", "Prague", "Vienna", "Kyoto", "Miami", "Barcelona", "Copenhagen", "Dublin", "San Francisco", "Havana", "Petra", "Munich", "Madrid", "Denver", "Johannesburg", "Melbourne", "Sydney", "Hong Kong", "Mexico City", "Kingston", "Istanbul", "Oslo", "Warsaw", "Moscow", "Berlin", "Quebec", "Phoenix", "London", "Vancouver", ]
+    const defaultCities = ["New York", "Paris", "Prague", "Vienna", "Kyoto", "Miami", "Barcelona", "Copenhagen", "Dublin", "San Francisco", "Havana", "Petra", "Munich", "Madrid", "Denver", "Johannesburg", "Melbourne", "Sydney", "Hong Kong", "Mexico City", "Kingston", "Istanbul", "Oslo", "Warsaw", "Moscow", "Berlin", "Quebec", "Phoenix", "London", "Vancouver", "Barcelona", "Paris", "Berlin", "Prague", "Istanbul", "Kyoto","Sydney", "Petra", "Florence", "Venice", "Chamonix", "Buenos Aires", "Nashville", "Manila", "Kuala Lumpur", "Taipei", "Manila", "Nashville", "London" ]
 
     let value = Math.floor(Math.random() * (defaultCities.length-1))
 
@@ -150,6 +150,10 @@ export default class Main extends Component {
     pickRandom()
   } //closes randomize
 
+  triggerSearch(){
+    this.findImages();
+    this.findAttractions();
+  }
 
   render() {
 
@@ -171,8 +175,11 @@ export default class Main extends Component {
           onChange={this.handleChange.bind(this)}
           placeholder="enter a city to explore"
         /><br />
-        <button type="submit" className="find-images" onClick={this.findImages.bind(this)} >Find images</button>
-        <button type="submit" className="find-attractions" onClick={this.findAttractions.bind(this)} >Find things to do</button>
+        <button type="submit" className="find-images"
+          onClick={this.triggerSearch.bind(this)}>
+          Search
+        </button>
+
       </div>
       <div className="wrapper">
         <div className="imagesAndAttractions">

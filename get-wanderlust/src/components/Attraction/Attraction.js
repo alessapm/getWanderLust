@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 
 const Attraction = (props) => {
+
   return (
     <div className='attraction'>
       <div className='att-details'>

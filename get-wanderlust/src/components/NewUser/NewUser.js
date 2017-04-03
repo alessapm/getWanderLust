@@ -82,7 +82,7 @@ export default class NewUser extends Component {
               placeholder='Enter password' />
               <br /><br />
             </div>
-            <button type="submit" className="find-attractions">Submit</button>
+            <button type="submit" className="sign-btn">Submit</button>
 
           </form>
       </div>

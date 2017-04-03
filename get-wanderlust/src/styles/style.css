@@ -28,11 +28,16 @@ nav p {
   font-family: 'Roboto Condensed', sans-serif;
 }
 
+h2 {
+  font-size: 2.5rem;
+}
+
 .nav-links {
   display: flex;
   justify-content: space-around;
   align-items: center;
   width: 30%;
+  font-size: 1.3rem;
 }
 
 .nav-links a {
@@ -55,7 +60,9 @@ nav p {
 
 .search-area {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 100px;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: lighter;
 }
 
 input {
@@ -69,12 +76,8 @@ input {
   padding-left: 10px;
 
 }
-.search-area {
-  font-family: 'Roboto Condensed', sans-serif;
-  font-weight: lighter;
-}
 
-/*was search-area label*/
+
 label {
   font-size: 2rem;
 
@@ -89,6 +92,7 @@ label {
   width: 128px;
   height: 40px;
   font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1rem;
   cursor: pointer;
   letter-spacing: 1.2px;
   transition: all .5 ease;
@@ -98,7 +102,7 @@ label {
   transform: scale(.75,.75);
 }
 
-.find-attractions {
+.sign-btn {
   background-color: #61DBED;
   border: none;
   border-radius: 50%;
@@ -106,13 +110,13 @@ label {
   width: 128px;
   height: 40px;
   font-family: 'Roboto Condensed', sans-serif;
-  font-weight: bold;
+  font-size: 1rem;
   cursor: pointer;
   letter-spacing: 1.2px;
   transition: all .5 ease;
 }
 
-.find-attractions:active {
+.sign-btn:active {
   transform: scale(.75,.75);
 }
 
@@ -130,6 +134,7 @@ label {
 
 .getImages button {
   background-color: #FF8686;
+  color: rgba(250,250,250,1);
   border: none;
   border-radius: 50%;
   padding: 10px;
@@ -137,11 +142,12 @@ label {
   width: 128px;
   height: 40px;
   font-family: 'Roboto Condensed', sans-serif;
-  font-size: .7rem;
+  font-size: 1rem;
   cursor: pointer;
   letter-spacing: 1.2px;
   transition: all .5s ease;
 }
+
 
 .getImages button:active {
   transform: scale(.75,.75);
@@ -235,7 +241,7 @@ label {
 }
 
 .logo {
-  width: 100px;
+  width: 140px;
 }
 
 .flex {
@@ -253,8 +259,16 @@ label {
 
 .showing {
   padding-left: 10px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
+.showing p {
+  font-size: 1.25rem;
+  margin-right: 20px;
+
+}
 .dash-wrapper {
   background-image: url('./chuttersnap-176806-compressed.jpg');
   background-size: 100% 100%;
@@ -282,6 +296,12 @@ label {
   border-bottom: 1px rgba(250,250,250,.2) dashed;
   width: 25%;
   min-width: 235px;
+  font-size: 1.2rem;
+}
+
+.list-city h3{
+  font-size: 1.8rem;
+
 }
 
 .remove-btn {
@@ -328,4 +348,162 @@ label {
 
 .drop {
   margin-bottom: 120px;
+}
+
+
+@media only screen and (max-width: 950px){
+  .nav-links {
+    width: 50%;
+  }
+} /* close media query 950 */
+
+@media only screen and (max-width: 800px){
+
+  .welcome {
+    height: 600px;
+  }
+
+  .getAttractions{
+    height: 4200px;
+  }
+
+  .attraction {
+    flex-direction: column-reverse;
+  }
+
+  input {
+    width: 450px;
+  }
+
+} /* close media query 800 */
+
+@media only screen and (max-width: 650px) {
+
+  input {
+    width: 250px;
+  }
+
+  .wrapper {
+    height: 1800px;
+  }
+
+  .nav-links {
+    width: 100%;
+  }
+
+  .showing p {
+    font-size: 2rem;
+  }
+
+  .imagesAndAttractions {
+    flex-direction: column;
+    height: 100%;
+    align-content: flex-start;
+  }
+
+  .getImages {
+    width: 100%;
+    /*align-content: center;*/
+  }
+
+  .cityphotos-container {
+    justify-content: center;
+  }
+
+  .showing {
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+
+  .attraction {
+    flex-direction: row;
+    height: 0px;
+  }
+
+  .getAttractions {
+    height: 0px;
+    z-index: -5;
+    visibility: hidden;
+  }
+
+
+  .carousel-wrapper{
+    height: 100%;
+    background-color: rgba(1,1,1,1)
+  }
+
+  .carousel-wrapper img {
+    width: 600px;
+    height: 400px;
+  }
+
+  .carousel-wrapper button {
+    width: 100px;
+    height: 550px;
+
+  }
+
+
+  .flex {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #randomize {
+    margin: 0;
+  }
+
+  .nav-links a {
+    font-size: 1rem;
+  }
+
+  .nav-links p {
+    font-size: 1rem;
+  }
+
+  .nav-links img {
+    width: 100px;
+  }
+
+  .search-area {
+    margin: 0;
+  }
+
+  .find-images {
+    margin-top: 20px;
+  }
+
+} /* closes media query 650 */
+
+@media only screen and (max-width: 450px) {
+  .caro-modal {
+    width: 300px;
+  }
+
+  .caro-modal h2 {
+    font-size: 1.2rem;
+    margin-top: 50px;
+  }
+
+  .caro-modal h3 {
+    font-size: 1rem;
+  }
+
+  .caro-modal img {
+    height: 200px;
+    width: 300px;
+  }
+
+  .user-h1 img {
+    width: 300px;
+  }
+
+  .cityphotos-container img {
+    width: 150px;
+  }
+
+  .carousel-wrapper button {
+    font-size: 1.2rem;
+  }
+
 }
