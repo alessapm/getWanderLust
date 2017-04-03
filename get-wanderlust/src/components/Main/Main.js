@@ -89,7 +89,7 @@ export default class Main extends Component {
     })
     .then(r => r.json()
       .then((data) => {
-        console.log('data: ', data);
+        // console.log('data: ', data);
         this.setState({ images: data, reveal: true})
       })
     )
@@ -110,7 +110,18 @@ export default class Main extends Component {
         this.setState({ attractions: data })
       })
     )
-    .catch((err) => console.log('findAttractions err: ', err));
+    .catch((err) => {
+      console.log('findAttractions err: ', err);
+      this.setState({
+        attractions:
+          [{categories: [],
+            id: 5,
+            rating: "",
+            name: "Attractions for this city are unavailable",
+            image_url: "",
+            url: "" }]
+      })
+    });
   }//closes findAttractions
 
 
@@ -124,13 +135,14 @@ export default class Main extends Component {
 
   randomize(){
 
-    const defaultCities = ["New York", "Paris", "Prague", "Vienna", "Kyoto", "Miami", "Barcelona", "Copenhagen", "Dublin", "San Francisco", "Havana", "Petra", "Munich", "Madrid", "Denver", "Johannesburg", "Melbourne", "Sydney", "Hong Kong", "Mexico City", "Kingston", "Istanbul", "Oslo", "Warsaw", "Moscow", "Berlin", "Quebec", "Phoenix", "London", "Vancouver"]
+    const defaultCities = ["New York", "Paris", "Prague", "Vienna", "Kyoto", "Miami", "Barcelona", "Copenhagen", "Dublin", "San Francisco", "Havana", "Petra", "Munich", "Madrid", "Denver", "Johannesburg", "Melbourne", "Sydney", "Hong Kong", "Mexico City", "Kingston", "Istanbul", "Oslo", "Warsaw", "Moscow", "Berlin", "Quebec", "Phoenix", "London", "Vancouver", ]
 
     let value = Math.floor(Math.random() * (defaultCities.length-1))
 
     let pickRandom = () => {
       this.setState({city: defaultCities[value]}, () => {
-        this.findImages()
+        this.findImages();
+        this.findAttractions();
       })
 
     }

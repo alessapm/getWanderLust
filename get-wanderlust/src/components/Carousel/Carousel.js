@@ -16,11 +16,32 @@ class Carousel extends Component {
     }
   }
 
-  next(){
-    this.setState({
-      index: this.state.index + 1
-    })
+  componentDidMount(){
+    this.setState({images: this.props.images})
   }
+
+  next(){
+    if(this.state.index === this.state.images.length-1){
+      this.setState({index: 0})
+    } else {
+      this.setState({
+        index: this.state.index + 1
+      })
+    }
+
+  } //closes next
+
+  prev(){
+    console.log('this.state: ', this.state)
+    if(this.state.index === 0){
+      this.setState({index: this.state.images.length-1})
+    } else {
+      this.setState({
+        index: this.state.index - 1
+      })
+    }
+
+  } //closes prev
 
   render() {
     let images;
@@ -41,46 +62,22 @@ class Carousel extends Component {
       });
     }
 
-    console.log('******IMAGES: ', images)
+
 
     return (
       <div className='carousel-wrapper'>
-        <button>prev</button>
+        <button onClick={this.prev.bind(this)}>&#8617;</button>
           {images[this.state.index]}
-        <button onClick={this.next.bind(this)}>next</button>
+        <button onClick={this.next.bind(this)}>&#8618;</button>
       </div>
     )
 
-    // const settings = {
-    //   dots: true,
-    //   infinite: true,
-    //   arrows: true,
-    //   slidesToShow: 1,
-    //   slidesToScroll: 1
-    // };
 
-    // return (
-    //   <div className='contains-slider'>
-    //     <Slider {...settings}>
-    //       <div><h3>1</h3></div>
-    //       <div><h3>2</h3></div>
-    //       <div><h3>3</h3></div>
-    //       <div><h3>4</h3></div>
-    //       <div><h3>5</h3></div>
-    //       <div><h3>6</h3></div>
-    //     </Slider>
-    //   </div>
-    //   )
-
-
-  }
+  } //closes render
 
 
 } //closes Carousel
 
-// ReactDOM.render(
-//   <Carousel />,
-//   document.getElementById('contains-slider')
-// );
+
 
 export default Carousel;
