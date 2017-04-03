@@ -1,26 +1,31 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Photo from '../Photo/Photo.js';
 
-const CityPhotos = (props) => {
+class CityPhotos extends Component {
 
-  const images = props.images.map((image) => {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    const images = this.props.images.map((image) => {
+      return (
+        <Photo
+          key={image.id}
+          title={image.title}
+          photo={image.display_sizes[0].uri}
+          caption={image.caption}
+          setModal={this.props.setModal}
+        />
+      )
+    });
+
     return (
-      <Photo
-        key={image.id}
-        title={image.title}
-        photo={image.display_sizes[0].uri}
-        caption={image.caption}
-        // onClick= {props.setModal()}
-      />
+      <div className="cityphotos-container">
+        {images}
+      </div>
     )
-  });
-
-
-  return (
-    <div className="cityphotos-container">
-      {images}
-    </div>
-  )
+  }
 }
 
 

@@ -35,6 +35,7 @@ class Carousel extends Component {
           title={image.title}
           photo={image.display_sizes[0].uri}
           caption={image.caption}
+          unsetModal={this.props.unsetModal}
           />
           )
       });

@@ -163,11 +163,17 @@ label {
 
 .carousel-wrapper {
   display: flex;
+  justify-content: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
 }
 
 .caro-modal {
   text-align: center;
-  background-color: rgba(1,1,1,.95);
+  background-color: rgba(1,1,1,.85);
+  width: 90%;
 
 }
 

@@ -16,7 +16,7 @@ export default class Main extends Component {
       images: [],
       attractions: [],
       reveal: false,
-      modal: true
+      modal: false
     }
   }
 
@@ -58,12 +58,24 @@ export default class Main extends Component {
 
 
   setModal(){
-    console.log('setModalTrue!')
-    //  const set = () => {
-    //   this.setState({modal: true});
-    // }
+    console.log('setModal!');
+
+     const set = () => {
+      this.setState({modal: true});
+    }
+
+    set()
   }
 
+  unsetModal(){
+    console.log('UNSET MODAL');
+
+    const unset = () => {
+      this.setState({modal: false});
+    }
+
+    unset()
+  }
 
   //request to GettyImages API route
   findImages() {
@@ -168,7 +180,13 @@ export default class Main extends Component {
 
         </div>
         <div className="getCarousel">
-          { this.state.modal ? <Carousel images={this.state.images} /> : null }
+          { this.state.modal ?
+            <Carousel
+            images={this.state.images}
+            unsetModal={this.unsetModal.bind(this)}
+             />
+
+          : null }
         </div>
       </div>
     </div>

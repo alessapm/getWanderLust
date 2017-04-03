@@ -1,27 +1,42 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const CarouselImage = (props) => {
-      let urlString = props.photo
-      let indexNeeded = urlString.indexOf('?');
-      let newString = urlString.substring(0,indexNeeded);
+class CarouselImage extends Component {
+  constructor(props){
+    super(props);
+
+    this.state = {
+      substring: ''
+    }
 
 
- return (
-        <div className='caro-modal'>
-          <h2>{props.title}</h2>
-          <img src={newString} />
-          <h3>{props.caption}</h3>
-        </div>
-      )
+  }
+
+  componentDidMount(){
+    let urlString = this.props.photo
+    let indexNeeded = urlString.indexOf('?');
+    let newString = urlString.substring(0,indexNeeded);
+
+    this.setState({substring: newString})
+  }
+
+
+
+ render() {
+
+  return (
+
+    <div className='caro-modal' onClick={this.props.unsetModal}>
+      <h2>{this.props.title}</h2>
+      <img src={this.state.substring} />
+      <h3>{this.props.caption}</h3>
+    </div>
+  )
+
+ }
+
 
 
 } //closes CarouselImage
-
-
-
-
-
-
 
 
 export default CarouselImage;
