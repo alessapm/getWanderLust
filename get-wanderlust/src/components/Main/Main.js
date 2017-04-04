@@ -22,15 +22,12 @@ export default class Main extends Component {
 
   //add something to the user's explore list
   addToExplore(){
-    //do request to express to add a explore item, get user_id from localStorage
-    fetch(`http://localhost:8000/explore/list/${window.localStorage.user_id}`, {
-      method: 'POST',
-      body: JSON.stringify({
+
+    Axios.post(`http://localhost:8000/explore/list/${window.localStorage.user_id}`, {
         city: {
           name: this.state.city,
           priority: 3
-        }
-      }),
+        },
       headers: {
         "Content-Type": "application/json"
       }
@@ -58,58 +55,45 @@ export default class Main extends Component {
 
 
   setModal(){
-    console.log('setModal!');
-
      const set = () => {
       this.setState({modal: true});
     }
 
-    set()
+    set();
   }
 
   unsetModal(){
-    console.log('UNSET MODAL');
-
     const unset = () => {
       this.setState({modal: false});
     }
 
-    unset()
+    unset();
   }
 
   //request to GettyImages API route
   findImages() {
-    // change to Axios()
 
-    fetch(`http://localhost:8000/explore/${this.state.city}`, {
-      method: 'GET',
+    Axios.get(`http://localhost:8000/explore/${this.state.city}`, {
       headers: {
         'Content-Type': 'application/json'
       }
     })
-    .then(r => r.json()
-      .then((data) => {
-        // console.log('data: ', data);
-        this.setState({ images: data, reveal: true})
-      })
-    )
+    .then((data) => {
+        this.setState({ images: data.data, reveal: true})
+    })
     .catch((err) => console.log('findImages err: ', err));
   } //closes findImages
 
   //request to Yelp API route
   findAttractions() {
-    fetch(`http://localhost:8000/explore/attractions/${this.state.city}`, {
-      method: 'GET',
+    Axios.get(`http://localhost:8000/explore/attractions/${this.state.city}`, {
       headers: {
         'Content-Type': 'application/json'
       }
     })
-    .then(r => r.json()
-      .then((data) => {
-        console.log('*******data: ', data);
-        this.setState({ attractions: data })
-      })
-    )
+    .then((data) => {
+      this.setState({ attractions: data.data});
+    })
     .catch((err) => {
       console.log('findAttractions err: ', err);
       this.setState({
@@ -129,13 +113,12 @@ export default class Main extends Component {
     this.setState({
       city: event.target.value
     })
-
   }
 
 
   randomize(){
 
-    const defaultCities = ["New York", "Paris", "Prague", "Vienna", "Kyoto", "Miami", "Barcelona", "Copenhagen", "Dublin", "San Francisco", "Havana", "Petra", "Munich", "Madrid", "Denver", "Johannesburg", "Melbourne", "Sydney", "Hong Kong", "Mexico City", "Kingston", "Istanbul", "Oslo", "Warsaw", "Moscow", "Berlin", "Quebec", "Phoenix", "London", "Vancouver", "Barcelona", "Paris", "Berlin", "Prague", "Istanbul", "Kyoto","Sydney", "Petra", "Florence", "Venice", "Chamonix", "Buenos Aires", "Nashville", "Manila", "Kuala Lumpur", "Taipei", "Manila", "Nashville", "London" ]
+    const defaultCities = ["New York", "Paris", "Prague", "Vienna", "Kyoto", "Miami", "Barcelona", "Copenhagen", "Dublin", "San Francisco", "Havana", "Petra", "Munich", "Madrid", "Denver", "Johannesburg", "Melbourne", "Sydney", "Hong Kong", "Mexico City", "Kingston", "Istanbul", "Oslo", "Warsaw", "Moscow", "Berlin", "Quebec", "Phoenix", "London", "Vancouver", "Barcelona", "Paris", "Berlin", "Prague", "Istanbul", "Kyoto","Sydney", "Petra", "Venice", "Chamonix", "Buenos Aires", "Nashville", "Manila", "Kuala Lumpur", "Taipei", "Manila", "Nashville", "London" ]
 
     let value = Math.floor(Math.random() * (defaultCities.length-1))
 
@@ -144,7 +127,6 @@ export default class Main extends Component {
         this.findImages();
         this.findAttractions();
       })
-
     }
 
     pickRandom()

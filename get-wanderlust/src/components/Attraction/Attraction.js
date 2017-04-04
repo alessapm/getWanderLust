@@ -7,7 +7,7 @@ const Attraction = (props) => {
     <div className='attraction'>
       <div className='att-details'>
         <h3>{props.name}</h3>
-        <p>rating: {props.rating} &#9733;<br />
+        <p>rating: {props.rating} stars<br />
         category: {props.category}
         </p>
         <a href={props.yelp_url} target="_blank">view on Yelp.com</a>
