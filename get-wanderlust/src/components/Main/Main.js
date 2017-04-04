@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
-import update from 'react-addons-update';
+
 
 import CityPhotos from '../CityPhotos/CityPhotos';
 import CityAttractions from '../CityAttractions/CityAttractions';
 import Nav from '../Nav/Nav';
 import Carousel from '../Carousel/Carousel';
+import Logo from '../../styles/get-wanderflust-white-01.svg';
 
 export default class Main extends Component {
   constructor(props) {
@@ -23,7 +24,7 @@ export default class Main extends Component {
   //add something to the user's explore list
   addToExplore(){
 
-    Axios.post(`http://localhost:8000/explore/list/${window.localStorage.user_id}`, {
+    Axios.post(`https://get-wanderlust.herokuapp.com/explore/list/${window.localStorage.user_id}`, {
         city: {
           name: this.state.city,
           priority: 3
@@ -73,7 +74,7 @@ export default class Main extends Component {
   //request to GettyImages API route
   findImages() {
 
-    Axios.get(`http://localhost:8000/explore/${this.state.city}`, {
+    Axios.get(`https://get-wanderlust.herokuapp.com/explore/${this.state.city}`, {
       headers: {
         'Content-Type': 'application/json'
       }
@@ -86,7 +87,7 @@ export default class Main extends Component {
 
   //request to Yelp API route
   findAttractions() {
-    Axios.get(`http://localhost:8000/explore/attractions/${this.state.city}`, {
+    Axios.get(`https://get-wanderlust.herokuapp.com/explore/attractions/${this.state.city}`, {
       headers: {
         'Content-Type': 'application/json'
       }
@@ -143,7 +144,7 @@ export default class Main extends Component {
      <div>
       <Nav />
       <div className="welcome">
-          <img src="../../styles/get-wanderflust-white-01.svg" />
+          <img src={ Logo } />
       </div>
       <div className="search-area">
 

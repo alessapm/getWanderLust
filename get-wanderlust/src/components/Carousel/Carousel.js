@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CarouselImage from '../CarouselImage/CarouselImage.js';
-import Slider from 'react-slick';
-import ReactDOM from 'react-dom';
+
+
 
 class Carousel extends Component {
   // console.log('carousel props: ', props)

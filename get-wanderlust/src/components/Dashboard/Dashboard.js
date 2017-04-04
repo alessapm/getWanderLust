@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import update from 'react-addons-update';
+
 import Nav from '../Nav/Nav';
 import { browserHistory } from 'react-router';
 
@@ -26,7 +26,7 @@ export default class Dashboard extends Component {
   } //closes componentDidMount
 
   getExploreList() {
-    fetch('http://localhost:8000/users/restrict', {
+    fetch('https://get-wanderlust.herokuapp.com/users/restrict', {
       method: 'GET',
       headers: {
         'Authorization': window.localStorage.getItem('token')
@@ -36,7 +36,7 @@ export default class Dashboard extends Component {
       results.json().then((content) => {
         console.log(content.message);
 
-        fetch(`http://localhost:8000/explore/list/${localStorage.user_id}`, {
+        fetch(`https://get-wanderlust.herokuapp.com/explore/list/${localStorage.user_id}`, {
           method: 'GET'
         })
         .then((list) => {
@@ -61,12 +61,12 @@ export default class Dashboard extends Component {
       console.log('fail in catch...', err);
       browserHistory.push('/login');
     })
-  }; //closes getExploreList
+  } //closes getExploreList
 
   removeCity(id){
 
     this.setState({remove_id: id}, () => {
-      fetch(`http://localhost:8000/explore/list/d/${id}`, {
+      fetch(`https://get-wanderlust.herokuapp.com/explore/list/d/${id}`, {
         method: 'DELETE'
       })
       .then(() => {

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import update from 'react-addons-update';
 import { browserHistory } from 'react-router';
+import Logo from '../../styles/get-wanderflust-white-01.svg';
+import Axios from 'axios';
 
 import Nav from '../Nav/Nav';
 
@@ -24,25 +26,24 @@ export default class NewUser extends Component {
     });
 
     this.setState(newState);
-  }; //close handleChange
+  } //close handleChange
 
   handleSubmit(event){
     event.preventDefault();
 
-    fetch('http://localhost:8000/users', {
-      method: 'POST',
+    Axios.post("https://get-wanderlust.herokuapp.com/users", {
       body: JSON.stringify(this.state),
       headers: {
         "Content-Type": "application/json"
       }
-    }).then((data) => {
-      console.log('new user created');
-      browserHistory.push('/login');
+    }).then(() => {
+      console.log("new user created");
+      browserHistory.push("/login");
     })
     .catch((err) => {
       console.log(err);
     })
-  }; //closes handleSubmit
+  } //closes handleSubmit
 
 
   render() {
@@ -52,7 +53,7 @@ export default class NewUser extends Component {
 
         <form className="user-form" onSubmit={this.handleSubmit.bind(this)}>
           <h1 className="user-h1">Welcome to <br />
-          <img src="../../styles/get-wanderflust-white-01.svg" /></h1><br />
+          <img src={ Logo } /></h1><br />
           <div className="form-content">
             <label>First Name: </label><br/>
             <input name="first_name"
@@ -69,17 +70,17 @@ export default class NewUser extends Component {
               <br /><br />
 
               <label>Email Address: </label><br/>
-              <input name='email'
+              <input name="email"
               onChange={this.handleChange.bind(this)}
               type='text'
-              placeholder='Enter Email' />
+              placeholder="Enter Email" />
               <br /><br />
 
               <label>Password: </label><br/>
-              <input name='password'
+              <input name="password"
               onChange={this.handleChange.bind(this)}
               type='password'
-              placeholder='Enter password' />
+              placeholder="Enter password" />
               <br /><br />
             </div>
             <button type="submit" className="sign-btn">Submit</button>

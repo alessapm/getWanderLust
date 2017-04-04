@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import { browserHistory } from 'react-router';
+import Logo from '../../styles/get-wanderflust-white-01.svg';
+
 
 export default class NavLinks extends Component {
   constructor(){
@@ -22,14 +23,14 @@ export default class NavLinks extends Component {
     localStorage.removeItem('lastname');
     localStorage.removeItem('user_id');
      window.location.reload();
-     // browserHistory.push('/');
+
   }
 
   render(){
     if (this.state.isloggedin){
       return (
         <div className="nav-links">
-          <Link to="/"><img className="logo" src="../../styles/get-wanderflust-white-01.svg" /></Link>
+          <Link to="/"><img className="logo" src={ Logo } /></Link>
           <Link to="/dashboard">Explore List</Link>
           <p onClick={this.logout.bind(this)}>Logout</p>
         </div>
@@ -37,7 +38,7 @@ export default class NavLinks extends Component {
     } else {
       return (
         <div className="nav-links">
-          <Link to="/"><img className="logo" src="../../styles/get-wanderflust-white-01.svg" /></Link>
+          <Link to="/"><img className="logo" src={ Logo } /></Link>
           <Link to="/login">Login</Link>
           <Link to="/signup">Signup</Link>
         </div>
