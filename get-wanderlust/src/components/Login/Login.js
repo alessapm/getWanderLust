@@ -47,7 +47,7 @@ export default class Login extends Component {
 
 
 
-        browserHistory.push('/dashboard') //need id with this?
+        browserHistory.push('/dashboard')
 
       })
     })

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import Logo from '../../styles/get-wanderflust-white-01.svg';
-
+import { browserHistory } from 'react-router';
 
 export default class NavLinks extends Component {
   constructor(){
@@ -22,7 +22,8 @@ export default class NavLinks extends Component {
     localStorage.removeItem('firstname');
     localStorage.removeItem('lastname');
     localStorage.removeItem('user_id');
-     window.location.reload();
+     // window.location.reload();
+    browserHistory.push("/login");
 
   }
 

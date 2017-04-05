@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import update from 'react-addons-update';
 import { browserHistory } from 'react-router';
 import Logo from '../../styles/get-wanderflust-white-01.svg';
-import Axios from 'axios';
+// import Axios from 'axios';
 
 import Nav from '../Nav/Nav';
 
@@ -31,7 +31,8 @@ export default class NewUser extends Component {
   handleSubmit(event){
     event.preventDefault();
 
-    Axios.post("https://get-wanderlust.herokuapp.com/users", {
+    fetch("https://get-wanderlust.herokuapp.com/users", {
+      method: "POST",
       body: JSON.stringify(this.state),
       headers: {
         "Content-Type": "application/json"

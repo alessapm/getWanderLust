@@ -70,7 +70,7 @@ export default class Dashboard extends Component {
         method: 'DELETE'
       })
       .then(() => {
-        window.location.reload()
+        browserHistory.push('/');
       })
       .catch((err) => {
         console.log('error in removeCity: ', err)
