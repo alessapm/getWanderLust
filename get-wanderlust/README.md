@@ -1,6 +1,6 @@
 # getWanderLust 
 
-#welcome to getWanderLust, a truly photo-inspired travel site, allowing you to feed your wanderlust by viewing crave-worthy photos of your desired destinations paired with the destination's top attractions. This project consists of two repositories, the front-end repo is built in React and is available [here](https://github.com/alessapm/getWanderLust) and the back-end is built in Node.js and is available [here](https://github.com/alessapm/getWanderLust-node). The contents of this README will apply to both of these repos, as they comprise one app. 
+Welcome to getWanderLust, a truly photo-inspired travel site, allowing you to feed your wanderlust by viewing crave-worthy photos of your desired destinations paired with the destination's top attractions. This project consists of two repositories, the front-end repo is built in React and is available [here](https://github.com/alessapm/getWanderLust) and the back-end is built in Node.js and is available [here](https://github.com/alessapm/getWanderLust-node). The contents of this README will apply to both of these repos, as they comprise one app. To see the deployed site, click [here](https://getwanderlust.herokuapp.com)
 
 
 ## Approach 
