@@ -13,8 +13,6 @@ import Dashboard from './components/Dashboard/Dashboard';
 
 
 
-
-
 ReactDom.render(
   <Router history={browserHistory}>
     <Route path='/' component={Main} />

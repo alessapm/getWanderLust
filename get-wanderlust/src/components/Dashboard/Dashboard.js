@@ -41,7 +41,7 @@ export default class Dashboard extends Component {
         })
         .then((list) => {
           list.json().then((explore_list) => {
-            console.log('**explore list: ', explore_list);
+            // console.log('**explore list: ', explore_list);
 
             if(explore_list.length > 0) {
               this.setState({
